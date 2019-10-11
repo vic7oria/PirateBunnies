@@ -1,0 +1,11 @@
+.ship-piece {
+    background-color: mediumpurple;
+}
+
+​ .ship-piece-hit {
+    background-color: darkmagenta;
+}
+
+.carrotBomb {
+    background-color: orange;
+}
