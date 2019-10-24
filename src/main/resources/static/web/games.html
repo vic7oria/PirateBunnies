@@ -2,44 +2,46 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="style/salvoCss.css">
     <meta charset="UTF-8">
     <title>games</title>
 </head>
 
 <body>
-    <h1>Salvo!</h1>
-    <form id="login-form" onsubmit="return false">
-        <h3>Sign In</h3>
+    <h1>Pirate Bunnies Salvo!</h1>
+    <form id="login-form">
+        <h3>Join the adventure...</h3>
         <label>Username: <input type="email" id="username"></label>
         <label>Password: <input type="password" id="password"></label>
         <button onclick="logIn()">Log in</button>
         <button onclick="signUp()">Sign up</button>
     </form>
 
-    <form id="logout-form" onsubmit="return false">
+    <form id="newGame-form">
+        <h3 id="pirateFight"></h3>
+        <button onclick="newGame()">Create new game</button>
+    </form>
+
+    <form id="logout-form">
         <h3 id="Hello"></h3>
         <button onclick="logout()">Log out</button>
     </form>
 
-    <!-- Modal -->
-    <!-- <div class="modal"></div>
-    show.bs.modal This event fires immediately when the show instance method is called. If caused by a click, the
-    clicked element is available as the relatedTarget property of the event. -->
+    <section>
+        <h2>Table Game List</h2>
+        <table id="gameList" class="table table-hover">
+        </table>
 
-    <ol id="gameList">
-    </ol>
-
-    <h2>Scores at a glance</h2>
-    <table id="table-glance" class="table table-hover">
-    </table>
+        <h2>Scores at a glance</h2>
+        <table id="table-glance" class="table table-hover">
+        </table>
+    </section>
 
     <script src="scripts/jquery-3.3.1.min.js"></script>
     <script src="scripts/games.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous">
     </script>
-
 </body>
-
 </html>

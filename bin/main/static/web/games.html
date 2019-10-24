@@ -10,31 +10,38 @@
 </head>
 
 <body>
-    <h1>Salvo!</h1>
-
-    <h3>Sign In</h3>
-    <form id="login-form" onsubmit="return false">
+    <h1>Pirate Bunnies Salvo!</h1>
+    <form id="login-form">
+        <h3>Join the adventure...</h3>
         <label>Username: <input type="email" id="username"></label>
         <label>Password: <input type="password" id="password"></label>
-        <button onclick="login()">Log in</button>
+        <button onclick="logIn()">Log in</button>
+        <button onclick="signUp()">Sign up</button>
     </form>
 
-    <form id="logout-form" onsubmit="return false">
+    <form id="newGame-form">
+        <h3 id="pirateFight"></h3>
+        <button onclick="newGame()">Create new game</button>
+    </form>
+
+    <form id="logout-form">
+        <h3 id="Hello"></h3>
         <button onclick="logout()">Log out</button>
     </form>
 
-    <ol id="gameList">
-    </ol>
+    <section>
+        <h2>Table Game List</h2>
+        <table id="gameList" class="table table-hover">
+        </table>
 
-    <h2>Scores at a glance</h2>
-    <table id="table-glance" class="table table-hover">
-    </table>
+        <h2>Scores at a glance</h2>
+        <table id="table-glance" class="table table-hover">
+        </table>
+    </section>
 
     <script src="scripts/jquery-3.3.1.min.js"></script>
     <script src="scripts/games.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous">
     </script>
-
 </body>
-
 </html>

@@ -72,7 +72,7 @@ public class SalvoController {
     }
     public Map<String, Object> makeGamePlayerDTO(GamePlayer gamePlayer) {
         Map<String, Object> dto = new LinkedHashMap<String, Object>();
-        dto.put("id", gamePlayer.getId());
+        dto.put("gpId", gamePlayer.getId());
         dto.put("player", gamePlayer.getPlayer().makePlayerDTO());
         return dto;
     }
@@ -80,7 +80,7 @@ public class SalvoController {
     public ResponseEntity<Map<String, Object>> showMyGameView(@PathVariable Long idGP, Authentication authentication) {
 
         if ( isGuest(authentication)) {
-            return new ResponseEntity<>(makeMap("error","Unathorized"), HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(makeMap("error","Unauthorized"), HttpStatus.UNAUTHORIZED);
         }
 
         Player  player  =   playerRepository.findByUserName(authentication.getName()).orElse(null);

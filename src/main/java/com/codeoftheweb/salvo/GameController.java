@@ -44,10 +44,10 @@ public class GameController {
     }
 
     @RequestMapping(path = "/games/{id}/players", method = RequestMethod.POST)
-    public ResponseEntity<Object> joinGame(@RequestParam   Long id, Authentication authentication) {
-
+    public ResponseEntity<Object> joinGame(@PathVariable   Long id, Authentication authentication) {
+        System.out.println("Entro al metodo :"+id);
         if ( isGuest(authentication)) {
-            return new ResponseEntity<>("Unathorized", HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>("Unauthorized", HttpStatus.UNAUTHORIZED);
         }
 
         Player  player  =   playerRepository.findByUserName(authentication.getName()).orElse(null);
@@ -61,10 +61,14 @@ public class GameController {
             return new ResponseEntity<>("Unauthorized", HttpStatus.UNAUTHORIZED);
         }
 
-        GamePlayer gamePlayer = gamePlayerRepository.save(new GamePlayer(game,player));
+        int gamePlayersCount = game.getGamePlayers().size();
 
-        return new ResponseEntity<>(makeMap("gpid",gamePlayer.getId()),HttpStatus.CREATED);
-
+        if (gamePlayersCount == 1) {
+            GamePlayer gamePlayer = gamePlayerRepository.save(new GamePlayer(game, player));
+            return new ResponseEntity<>(makeMap("gpid", gamePlayer.getId()), HttpStatus.CREATED);
+        }else {
+            return new ResponseEntity<>(makeMap("error", "Game is full!"), HttpStatus.FORBIDDEN);
+        }
     }
 
 
