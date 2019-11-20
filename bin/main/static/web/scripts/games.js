@@ -32,13 +32,26 @@ function showTableGames() {
                             console.log("es el jugador logeado y no se puede unir a un juego de un jugador: " + data);
                             $("#gameList").append('<tr>' + '<td>' + "Game: " + data.games[index].id + '</td>' + '<td>' + "Created " + new Date(data.games[index].created).toLocaleString() + '</td>' + '<td>' + "Player 1: " + data.games[index].gamePlayers[0].player.email + '</td>' + '<td>' + "Player 2 waiting..." + '</tr>');
                         }
-                    } else if (data.games[index].gamePlayers.length == 2) {
+                    } else if (data.games[index].gamePlayers.length == 2     &&     data.games[index].score.length == 0) {
+
                         console.log(data.player.email)
+
                         if (data.games[index].gamePlayers[0].player.email == data.player.email || data.games[index].gamePlayers[1].player.email == data.player.email) {
-                            $("#gameList").append('<tr>' + '<td>' + "Game: " + data.games[index].id + '</td>' + '<td>' + "Created " + new Date(data.games[index].created).toLocaleString() + '</td>' + '<td>' + "Player 1: " + data.games[index].gamePlayers[0].player.email + '</td>' + '<td>' + "Player 2: " + data.games[index].gamePlayers[1].player.email + '</td>' + '<td><form class="text-center"><button onclick="reJoin(' + data.games[index].gamePlayers.map(gp=>{console.log(gp);if(gp.player.email==data.player.email){console.log(gp.id);return gp.gpId}else{return}}) + ')">Rejoin</button></form>' + '</td>' + '</tr>');
+                            $("#gameList").append('<tr>' + '<td>' + "Game: " + data.games[index].id + '</td>' + '<td>' + "Created " + new Date(data.games[index].created).toLocaleString() + '</td>' + '<td>' + "Player 1: " + data.games[index].gamePlayers[0].player.email + '</td>' + '<td>' + "Player 2: " + data.games[index].gamePlayers[1].player.email + '</td>' + '<td><form class="text-center"><button onclick="reJoin(' + data.games[index].gamePlayers.map(gp => {
+                                console.log(gp);
+                                if (gp.player.email == data.player.email) {
+                                    console.log(gp.id);
+                                    return gp.gpId
+                                } else {
+                                    return
+                                }
+                            }) + ')">Rejoin</button></form>' + '</td>' + '</tr>');
                         } else {
                             $("#gameList").append('<tr>' + '<td>' + "Game: " + data.games[index].id + '</td>' + '<td>' + "Created " + new Date(data.games[index].created).toLocaleString() + '</td>' + '<td>' + "Player 1: " + data.games[index].gamePlayers[0].player.email + '</td>' + '<td>' + "Player 2: " + data.games[index].gamePlayers[1].player.email + '</td>' + '</tr>');
                         }
+
+                    }else{
+                        $("#gameList").append('<tr>' + '<td>' + "Game: " + data.games[index].id + '</td>' + '<td>' + "Created " + new Date(data.games[index].created).toLocaleString() + '</td>' + '<td>' + "Player 1: " + data.games[index].gamePlayers[0].player.email + '</td>' + '<td>' + "Player 2: " + data.games[index].gamePlayers[1].player.email + '</td>' + '</tr>');
                     }
                 }
             }

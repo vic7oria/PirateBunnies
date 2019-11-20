@@ -261,8 +261,9 @@ public class SalvoApplication {
 			Score score6 = new Score(0,date,p4,g3);
 			Score score7 = new Score(0.5,date,p2,g4);
 			Score score8 = new Score(0.5,date,p1,g4);
+			Score score9 = new Score(1,date,p4,g8);
 
-			scoreRepository.saveAll(Arrays.asList(score1,score2,score3,score4,score5,score6,score7,score8));
+			scoreRepository.saveAll(Arrays.asList(score1,score2,score3,score4,score5,score6,score7,score8,score9));
 
 		};
 	}
